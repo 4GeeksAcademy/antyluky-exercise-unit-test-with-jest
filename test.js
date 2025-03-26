@@ -48,9 +48,8 @@ test("1 yen should be  0.0195 euro", function() {
     const { fromYenToPound } = require('./app.js');
 
     // Uso la función como debe ser usada
-    const yenes = fromYenToPound(3.5);
-    const resultado = (3.5 * 156.5) *  0.87;
+    const resultado = (3.5 / 156.5) *  0.87;
 
 
-    expect(yenes).toBe(resultado); 
+    expect(fromYenToPound(3.5)).toBe(resultado); 
 })

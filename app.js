@@ -29,11 +29,11 @@ const fromDollarToYen  = (yen) => {
 
 const fromYenToPound  = (yen) => {
     // de yen to euro
-    let euro = yen * 156.5;
+    let euro = yen/156.5;
     
     //de euro a  pound
     let pound = euro * 0.87; 
-    console.log(pound)    
+ 
     return pound;
 }
 

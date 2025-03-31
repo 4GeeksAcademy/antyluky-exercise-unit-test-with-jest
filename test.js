@@ -1,7 +1,13 @@
 // Import the function sum from the app.js file
 const { sum } = require('./app.js');
 
-// Start your first test
+let oneEuroIs = {
+    "JPY": 156.5, // japan yen
+    "USD": 1.07, // us dollar
+    "GBP": 0.87, // british pound
+}
+
+//Start your first test
 test('adds 14 + 9 to equal 23', () => {
     // Inside the test we call our sum function with 2 numbers
     let total = sum(14, 9);
@@ -11,7 +17,7 @@ test('adds 14 + 9 to equal 23', () => {
 });
 
 
-test("One euro should be 1.07 dollars", function() {
+test("fromEuroToDollar", function() {
     // Importo la funcion desde app.js
     const { fromEuroToDollar } = require('./app.js');
 
@@ -19,31 +25,34 @@ test("One euro should be 1.07 dollars", function() {
     const dollars = fromEuroToDollar(3.5);
 
     // Si 1 euro son 1.07 dólares, entonces 3.5 euros debe ser (3.5 * 1.07)
-    const expected = 3.5 * 1.07;
+    const expected = 3.5 * oneEuroIs.USD;
 
     // Hago mi comparación (la prueba)
-    expect(fromEuroToDollar(3.5)).toBe(3.745); // 1 euro son 1.07 dólares, entonces 3.5 euros deberían ser = (3.5 * 1.07)
+    expect(dollars).toBe(expected); // 1 euro son 1.07 dólares, entonces 3.5 euros deberían ser = (3.5 * 1.07)
 })
 
 
 
 
-test("One Dolar should be 156.5 Yen", function() {
+//fromDollarToYen
+test("fromDollarToYen", function() {
     // Importo la funcion desde app.js
     const { fromDollarToYen } = require('./app.js');
 
     // Uso la función como debe ser usada
-    const dollars = fromDollarToYen(3.5);
+    const yenes = fromDollarToYen(3.5);
 
-    // Si 1 dolar son 156.5 yen, entonces 3.5 euros debe ser (3.5 *156.5)
-    const expected = 3.5 * 156.5;
+    // 3.5 Dollars
+    const euros = 3.5 / oneEuroIs.USD;
+    const expectYenes = euros *  oneEuroIs.JPY;
 
     // Hago mi comparación (la prueba)
-    expect(fromDollarToYen(3.5)).toBe(dollars); // 1 dolar son 156.5 yen, entonces 3.5 euros deberían ser = (3.5 * 156.5)
+    expect(yenes).toBe(expectYenes); // 1 dolar son 156.5 yen, entonces 3.5 euros deberían ser = (3.5 * 156.5)
+
 })
 
 
-test("1 yen should be  0.0195 euro", function() {
+test("fromYenToPound", function() {
     // Importo la funcion desde app.js
     const { fromYenToPound } = require('./app.js');
 
